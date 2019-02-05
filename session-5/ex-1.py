@@ -1,3 +1,4 @@
+#when i press enter without typing any sequence
 def count_a(seq):
     '''Counting the numbers of As in the sequence'''
     #that is for comenting. it is necessary
@@ -13,7 +14,7 @@ def count_a(seq):
     return result
 
 #Main program
-s = 'AGTGTGCAATGGCC'
+s = input('Please enter the sequence: ')
 number_a = count_a(s)
 print('The number of As is: ',number_a)
 
@@ -21,7 +22,13 @@ print('The number of As is: ',number_a)
 total_length = len(s)
 
 #Calculate the percentage of As in the sequence
-percentage = round(100.0 * number_a / total_length, 1)
+if total_length > 0:
+    percentage = round(100.0 * number_a / total_length, 1)
+else:
+    percentage = 0
 
 print('The total length is: ', total_length)
 print('The percentage of As is: ', percentage)
+
+#ALWAYS bug, it will lead me to the error
+#For functions click the second botton
