@@ -14,7 +14,7 @@ def count_a(seq):
     return result
 
 #Main program
-s = input('Please enter the sequence: ')
+s = 'ACTGTGTCAACC'
 number_a = count_a(s)
 print('The number of As is: ',number_a)
 
