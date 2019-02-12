@@ -1,0 +1,37 @@
+Two principal aspects = client and server
+    -Client starts the communication
+    -Server will give the data
+   NOTE: have to run the server for the connection between client-server
+
+
+INTERNET
+    Identify the machine i want to be connected
+    Every computer has one or more Interphases each one with IP address
+    IP address can change depending on which computer you are connected, you send messages and they will arrive
+
+
+-example- the IP address of my phone at the university [12/02/2019]
+    phone IP = 10.0.54.62
+-example- getting the IP address of the computer. I enter to the terminal, write 'ifconfig',
+the part that says 'enp0s31f6' search in there the 'inet' thats the IP address
+    computer IP = 212.128.253.66
+    teacher's IP = 212.128.253.64
+
+
+To see if there is communication between the computer and final computer, I type in the terminal 'ping 8.8.8.8'
+    ping time to 8.8.8.8 ---- time=3.53 ms
+    ping time with my computer (using mi IP) ---- time=0.061 ms (61 us)
+    ping time to a computer in the same network (using the specific IP of the comp) ---- time=0.613 ms (600us)
+(obviously the time will depend on the distance)
+    ping time with my phone ---- time=61.0 ms
+    ping to www.google.com ---- 216.58.214.164
+    ping to urjc.es ---- 192.168.46.46
+
+
+PORT:
+    The common port of web is 80
+    TO CONNECTING TO THE SERVER: I need the IP address of the machine and the port number of the serverWRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILEWRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILEWRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILEWRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILEWRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILEWRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILEWRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILE
+WRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILE
+WRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILE
+WRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILE
+WRITE IS A TEXT EXAMPLE FOR ADDING TO MY FILE
