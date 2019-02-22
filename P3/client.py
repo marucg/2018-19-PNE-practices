@@ -1,4 +1,4 @@
-'''Program that will process the requests of the user'''
+'''Program that will process the requests of the user (DNA sequence)'''
 import socket
 from termcolor import colored
 
