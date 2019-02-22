@@ -1,4 +1,4 @@
-'''File containing the functions'''
+'''File containing the functions for the server'''
 class Seq:
     def __init__(self, strbases):
         self.strbases = strbases
