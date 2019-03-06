@@ -1,3 +1,6 @@
+'''Creating a program for accessing to several pages
+    using a http module'''
+
 import http.server
 import socketserver
 
@@ -11,7 +14,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         print('Request Line:' + self.requestline)
         print(' cmd: ' + self.command)
         print(' path: ' + self.path)
-
+    # OPTIONS THAT THE USER COULD ENTER
         if self.path == '/':
             file = 'index.html'
         elif self.path == '/pink':
@@ -20,10 +23,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             file = 'blue.html'
         else:
             file = 'error.html'
-
+    # OPEN THE FILE
         with open(file, 'r') as r:
             content = r.read()
-
+    # HTTP MODULE
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.send_header('Content-length', len(str.encode(content)))
