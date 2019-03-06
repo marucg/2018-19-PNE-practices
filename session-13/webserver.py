@@ -1,8 +1,9 @@
-# IT WILL OPEN MY PAGE 'MARU'S PAGE'
+'''file opening the index or error html
+    depending on the path introduced'''
 import http.server
 import socketserver
 
-PORT = 8007
+PORT = 8005
 # Its call whenever there is a request
 
 
@@ -18,21 +19,20 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         print('Request Line:' + self.requestline)
         print(' cmd: ' + self.command)
         print(' path: ' + self.path)
-
+    # OPTIONS
         if self.path == '/':
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html')
-            self.send_header('Content-length', len(str.encode(index)))
-            self.end_headers()
-            self.wfile.write(str.encode(index))
+            file = 'index.html'
         else:
-            self.send_response(404)
-            self.send_header('Content-type', 'text/html')
-            self.send_header('Content-length', len(str.encode(error)))
-            self.end_headers()
-            self.wfile.write(str.encode(error))
+            file = 'error.html'
 
-
+        with open(file, 'r') as r:
+            content = r.read()
+    # HTTP MODULE
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.send_header('Content-length', len(str.encode(content)))
+        self.end_headers()
+        self.wfile.write(str.encode(content))
         return
 
 
