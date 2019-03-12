@@ -1,0 +1,3 @@
+Open a terminal
+in the terminal write 'python -m http.server 8000'
+in firefox write 'localhost:8000'
