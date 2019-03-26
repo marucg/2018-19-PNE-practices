@@ -2,20 +2,31 @@ import http.server
 import socketserver
 import termcolor
 
-PORT = 8080
-
+PORT = 8081
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
-    # CREATING OBJECTS
-    # THE FUNCTION HAS TO BE CALLED 'do_GET'
     def do_GET(self):
 
         # PRINTING THE REQUEST LINE
         termcolor.cprint(self.requestline, 'green')
 
-        f = open('form1.html', 'r')
-        contents = f.read()
-        print('this is the message', contents)
+        message = self.path[10:]
+        print('this is message', message)
+        if self.path == '/':
+            with open('form1.html', 'r') as r:
+                contents = r.read()
+        elif message:
+            contents = """<html>
+            <body style="background-color: yellow;">
+            <title>Echo of the received message</title>         
+            <h1>Echo of the received message:</h1>
+            <br>"""+ message +"""<br><br>
+            <a href="http://localhost:8081/">Main Page</a>
+            </body>
+            </html>"""
+        else:
+            with open('error.html', 'r') as r:
+                contents = r.read()
 
     # GENERATING THE RESPONSE MESSAGE
         self.send_response(200)
@@ -26,14 +37,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
     # SENDING THE BODY
         self.wfile.write(str.encode(contents))
 
-        message = self.path[10:]
-        if self.path != '/':
-            file == 'error.html'
-        else:
-            file ==
 # ------MAIN PROGRAM------
-# PUTTING THE IP AS '' MEANS THAT WILL DEFAULT IP OF THE COMPUTER
-
 with socketserver.TCPServer(('', PORT), TestHandler) as httpd:
     print('Serving at PORT', PORT)
 
