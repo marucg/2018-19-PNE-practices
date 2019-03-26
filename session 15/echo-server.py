@@ -1,8 +1,11 @@
+'''Program for making an html file with the echo
+of the received message from the user '''
 import http.server
 import socketserver
 import termcolor
 
 PORT = 8081
+
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
@@ -20,7 +23,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             <body style="background-color: yellow;">
             <title>Echo of the received message</title>         
             <h1>Echo of the received message:</h1>
-            <br>"""+ message +"""<br><br>
+            <br>""" + message + """<br><br>
             <a href="http://localhost:8081/">Main Page</a>
             </body>
             </html>"""
@@ -36,6 +39,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
     # SENDING THE BODY
         self.wfile.write(str.encode(contents))
+
 
 # ------MAIN PROGRAM------
 with socketserver.TCPServer(('', PORT), TestHandler) as httpd:
