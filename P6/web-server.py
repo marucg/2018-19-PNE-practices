@@ -47,7 +47,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         divide_msg = self.path.split('&')
     # MAIN MESSAGE
         sequence = divide_msg[0][14:].upper()
-        if self.path == '/':
+        if self.path == '/' or self.path == '/seq':
             with open('main_page.html', 'r') as r:
                 contents = r.read()
         elif sequence:
