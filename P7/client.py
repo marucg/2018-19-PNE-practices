@@ -65,7 +65,6 @@ print('There are', length, 'bases in the FRAT1 gene')
 count_T = total_functions(s1, 'countT', sequence)
 print('There are', count_T, '"T" bases in the FRAT1 gene')
 percentage = ['percA', 'percC', 'percT', 'percG']
-names_bases = ['A', 'C', 'T', 'G']
 for perc in percentage:
     bases = total_functions(s1, perc, sequence)
     if perc == 'percA':
