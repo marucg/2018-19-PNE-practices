@@ -1,4 +1,4 @@
-# Example of accessing to the RandomCAT service for getting an URL
+# Example
 # of a random image of a CAT. This clients just print it on
 # the console
 
