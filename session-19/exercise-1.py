@@ -5,45 +5,49 @@
 import http.client
 import json
 
-# -- API information
+# ---- RANDOM JOKE ----
+HOSTNAME = "api.icndb.com"
+ENDPOINT = "/jokes/random"
+METHOD = "GET"
+
+headers = {'User-Agent': 'http-client'}
+conn = http.client.HTTPConnection(HOSTNAME)
+conn.request(METHOD, ENDPOINT, None, headers)
+r1 = conn.getresponse()
+print()
+text_json = r1.read().decode("utf-8")
+conn.close()
+jokes = json.loads(text_json)
+random_joke = jokes["value"]['joke']
+print('A random joke:', random_joke)
+
+# ---- NUMBER OF CATEGORIES ----
 HOSTNAME = "api.icndb.com"
 ENDPOINT = "/categories"
 METHOD = "GET"
 
-# -- Here we can define special headers if needed
 headers = {'User-Agent': 'http-client'}
-
-# -- Connect to the server
-# -- NOTICE it is an HTTPS connection!
-# -- If we do not specify the port, the standar one
-# -- will be used
 conn = http.client.HTTPConnection(HOSTNAME)
-
-# -- Send the request. No body (None)
-# -- Use the defined headers
 conn.request(METHOD, ENDPOINT, None, headers)
-
-# -- Wait for the server's response
 r1 = conn.getresponse()
-
-# -- Print the status
-print()
-#print("Response received: ", end='')
-#print(r1.status, r1.reason)
-
-# -- Read the response's body and close
-# -- the connection
 text_json = r1.read().decode("utf-8")
 conn.close()
+categories = json.loads(text_json)
+number_c = categories['value']
+print('The number of the different categories is', len(number_c))
+print('The names of the different categories are', number_c[0], 'and', number_c[1])
 
-# -- Optionally you can print the
-# -- received json file for testing
-# print(text_json)
+# ----NUMBER OF JOKES----
+HOSTNAME = "api.icndb.com"
+ENDPOINT = "/jokes/count"
+METHOD = "GET"
 
-# -- Generate the object from the json file
-jokes = json.loads(text_json)
-
-# -- Print the received URL
-
-names = jokes["value"]
-print('Name of the different categories', names)
+headers = {'User-Agent': 'http-client'}
+conn = http.client.HTTPConnection(HOSTNAME)
+conn.request(METHOD, ENDPOINT, None, headers)
+r1 = conn.getresponse()
+text_json = r1.read().decode("utf-8")
+conn.close()
+number = json.loads(text_json)
+total_number = number['value']
+print('The number of total jokes about Chuck Norris is', total_number)
