@@ -1,4 +1,4 @@
-# Example of getting information stored in github
+# Example
 
 import http.client
 import json
