@@ -4,14 +4,13 @@
 import http.client
 import json
 
-# -- API information
 HOSTNAME = "www.metaweather.com"
 ENDPOINT = "/api/location/"
 
 # -- For the location we have to use the
 # -- Were on earth identifier
 # -- London woeid = 44418
-# -- Madrid woeid = 766273
+# # -- Madrid woeid = 766273
 LOCATION_WOEID = "766273"
 METHOD = "GET"
 
