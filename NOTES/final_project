@@ -1,0 +1,19 @@
+when i finished de project, try it in the lab computer to see if it works perfectly
+put exactly the names
+- three levels -
+to pass to the next level, the basic level has to be perfect
+
+BASIC LEVEL:
+Read carefully API RESt
+create an index page
+test report (text file) like, these are the parameters and this is the result
+---mistakes
+ the server should not crush (exceptions)
+
+ MEDIUM LEVEL: only if i have 5 points
+ is the same as the basic level
+
+ ADVANCED LEVEL:
+ client
+ API REST
+ it will return Json file
