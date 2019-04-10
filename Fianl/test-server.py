@@ -1,48 +1,28 @@
-PORT = 8000
-
- # hola
-class TestHandler(http.server.BaseHTTPRequestHandler):
-    def do_GET(self):
-
-        # PRINTING THE REQUEST LINE
-        termcolor.cprint(self.requestline, 'yellow')
-
-        message = self.path[10:]
-        print('this is message', message)
-        if self.path == '/':
-            with open('form1.html', 'r') as r:
-                contents = r.read()
-        elif message:
-            contents = """<html>
-            <body style="background-color: yellow;">
-            <title>Echo of the received message</title>         
-            <h1>Echo of the received message:</h1>
-            <br>""" + message + """<br><br>
-            <a href="http://localhost:8081/">Main Page</a>
-            </body>
-            </html>"""
-        else:
-            with open('error.html', 'r') as r:
-                contents = r.read()
-
-    # GENERATING THE RESPONSE MESSAGE
-        self.send_response(200)
-    # SENDING THE HEADER (specifying the type of text)
-        self.send_header('Content Type', 'text/html')
-        self.send_header('Content-Length', len(str.encode(contents)))
-        self.end_headers()
-    # SENDING THE BODY
-        self.wfile.write(str.encode(contents))
+import http.client
+import json
 
 
-# ------MAIN PROGRAM------
-with socketserver.TCPServer(('', PORT), TestHandler) as httpd:
-    print('Serving at PORT', PORT)
-
-    try:
-        httpd.serve_forever()
-    except KeyboardInterrupt:
-        httpd.server_close()
+PORT = 80
+METHOD = 'GET'
+ENDPOINT = '/info/species?content-type=application/json'
+HOSTNAME = 'rest.ensembl.org'
 
 
-print('Sever stopped')
+headers = {'User-Agent': 'http-client'}
+conn = http.client.HTTPConnection(HOSTNAME)
+conn.request(METHOD, ENDPOINT, None, headers)
+r1 = conn.getresponse()
+print()
+data = r1.read().decode("utf-8")
+conn.close()
+
+# ----------------------------------
+def species():
+    information = json.loads(data)
+    species_info = information['species']
+    for element in species_info:
+        name = element['display_name']
+        print(name)
+
+name_sp = species()
+

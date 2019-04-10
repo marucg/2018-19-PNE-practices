@@ -2,19 +2,21 @@ import http.server
 import socketserver
 import termcolor
 
-PORT = 8003
+PORT = 8000
 
 
 class TestHandler(http.server.BaseHTTPRequestHandler):
-    # CREATING OBJECTS
-    # THE FUNCTION HAS TO BE CALLED 'do_GET'
     def do_GET(self):
 
-        # PRINTING THE REQUEST LINE
-        termcolor.cprint(self.requestline, 'green')
+        termcolor.cprint(self.requestline, 'yellow')
 
-        f = open('form2.html', 'r')
-        contents = f.read()
+    # DIVIDING THE MESSAGE BY THE OPTIONS THE USER ENTERED
+        divide_msg = self.path.split('&')
+    # MAIN MESSAGE
+        sequence = divide_msg[0][14:].upper()
+        if self.path == '/' or self.path == '/seq':
+            with open('Index.html', 'r') as r:
+                contents = r.read()
 
     # GENERATING THE RESPONSE MESSAGE
         self.send_response(200)
@@ -25,9 +27,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
     # SENDING THE BODY
         self.wfile.write(str.encode(contents))
 
-# ------MAIN PROGRAM------
-# PUTTING THE IP AS '' MEANS THAT WILL DEFAULT IP OF THE COMPUTER
 
+# ------MAIN PROGRAM------
 with socketserver.TCPServer(('', PORT), TestHandler) as httpd:
     print('Serving at PORT', PORT)
 
@@ -38,4 +39,3 @@ with socketserver.TCPServer(('', PORT), TestHandler) as httpd:
 
 
 print('Sever stopped')
-
